@@ -1,0 +1,7 @@
+Good morning. My name is Anil Reddy, and I’m from Sircilla. 
+I graduated with B.Tech degree in Electrical and Electronics Engineering from JNTU Hyderabad. Currently, 
+I am working at Micron, where I have 4 years of experience as a Software QA Engineer. 
+Alongside my professional work, I am also pursuing my M.Tech degree from BITS Pilani through the Work Integrated Learning Program, 
+which I am set to complete in December 2025. In my QA role, I have gained solid experience in software testing, debugging, 
+and automation, contributing to high-quality product releases. 
+I am passionate about continuous learning and excited to bring my experience and commitment to new challenges
