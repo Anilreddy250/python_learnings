@@ -1,0 +1,10 @@
+{
+    "auto_save": {
+        "enabled": true,
+        "interval_minutes": 5
+    },
+    "font_size": 14,
+    "language": "en-US",
+    "notifications_enabled": true,
+    "theme": "dark"
+}

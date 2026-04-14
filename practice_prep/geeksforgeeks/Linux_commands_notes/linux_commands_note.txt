@@ -1,0 +1,17 @@
+How do you find all files modified in the last 24 hours under /var/log?
+
+find /var/log -mtime -1 -type f
+-mtime -1 means "modified less than 1 day ago". Use -mmin -60 for the last 60 minutes. Combination with -name "*log" to filter by extension
+
+Q: how do you check disk usage of a directory and sort by sizes?
+
+du -s /path/* # human -radeable sizes
+du -sh * | sort -rh #sorted descending
+df -h # file system-level usage
+
+Q: how do you search for a pattern inside a files recursively ?
+ grep -r "pattern" /path
+ grep -rn "iron man"
+ grep -ri ""
+ grep -v ""
+

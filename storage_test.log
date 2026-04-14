@@ -1,0 +1,10 @@
+Device log started. The initialization process is scanning for the nvme storage device.
+The nvme controller responded successfully. 
+Warning: The latency on the bus is unusually high.
+Error: The nvme device failed a diagnostic read request.
+Error: The operation timed out. The nvme queue is stuck.
+Error: The driver caught an exception. Data error on the nvme bus.
+Error: The recovery process failed. Fatal error encountered.
+Error: The system cannot mount the nvme drive due to a critical hardware error.
+The system is now halting the nvme processes to prevent data corruption.
+

@@ -1,0 +1,126 @@
+what is a list in python ? How is it different frm=om a touple.
+Ans: A list is a mutable orderded collection that can hold mixed 
+data types, defined with []. A tuple is immutable and defined with()
+lists support item assignment; tuples do not
+my_list=[1,"hello, 3.14]
+my_list[0] = 90 allowed
+my_tuple[0] = 90 not allowed
+
+Q: what are the list comprehensions? give an example?
+list comprehensions provide a concise way to create lists using a single expressions. they are faster than traditional for -loop
+squares = [x**2 for x in range(10) if x %2 == 0]
+output: [0,4,16,36,64]
+
+q:How does python list slicing work? explain with an exaple?
+ans: slicing uses[start:stop:step] syntax. it returns a new list(shallow copy).
+a =[0,1,2,3,4,5]
+a[1:4] = [1,2,3]
+a[::2] = [0,2,4]
+a[::-1] = [5,4,3,2,1,0] reverse trick
+
+Q:what is the differende between appen(), extend(), and insert()?
+ans: append() adds single element to the end of the list
+extendn() adds all items of an iterable.
+insert(i,x) inserts x at index i
+lst = [1,2,3]
+lst.append([4,5]) = [1,2,3,[4,5]]
+lst.extend([4,5]) = [1,2,3,4,5]
+lst.insert(1,90) = [1,90,2,4]
+
+q:explain shallow copy vs deep copt for lists?
+ans: shallow copy creats a new list but nested objects are still referenced.
+deep copy creats completely independent copies of all nested objects.
+
+import copy
+a = [[1,2],[3,4]]
+b = a.copy() # shallow
+b[0][0] = 99 # also chanes a!
+
+
+c=copy.deepcopy(a) # deep copy
+c[0][0] = 88 #a is unaffected
+
+Q how do you remove duplicates from a list while preserving order?
+lst = [3,1,3,1,3,5]
+unique = list(dict.fromkeys(lst))
+or using a set(no order guarantee):
+unique = list(set(lst))
+print(unique)
+
+
+Q1: how does memory management differ between a list and tuple?
+answer: lists are mutable and over-allocate memory to allow  for efficient append operations(dynamic arrays)
+tuples are immutable and fixed-size, making them more memory-dffient and afaster to iterate over.
+
+Ams twist: "Because tuples are immutable, python can optimize them by caching small tuples in a resource pool, reducing memory fragmentation"
+
+Q2: whar is the time completely of insert(0, x vs append(x)?
+answer:
+apped(x) is o(1) (amortized) because it adds to the end.
+insert(0,x) is O(n) because all existing elements must shift one index to the right to make space.
+ follow-up for a queue(fifo), use collections deque instead of a list to get O(1) for both ends.
+
+ Q3: what is the difference between is and == when comparing lists?
+ ans: == compares the values(content) of the lists is compares the memory address(identity)
+ a =[1,2]
+ b =[1,2]
+  print(a==b) is the ture
+  print(a is b Flase Different objects in memomry))
+
+  @tuples:
+Q1: why can a tuple be used as a dictionary key but a list cannot?
+ANS: dictionary keys must be hashable . tuple are immutable and hashable(if they contain only hashable elements) lista are mutable, so their hash value could
+ change if contents changes, breaking the dictionary lookup logic.
+
+Q: How do you unpack a tuple with variable length ?
+ans: use the *(star)  operator:
+data = (10,20,30,40,50)
+start,*middle, end = data
+
+#diles (Focus resoruce management) & large data)
+Q: why is the wth statement preferred for filr handing?
+Ans: it acts as a context manager it ensures the file is properly closed(resource released )even id an exception
+(error) occures during processing , eliminating the need for an ecplicit finally block.
+
+q: how would you read a 10gb file in python on a machine with 4gb ram?
+mwthod1: iterate line by line in f: ... (file objects are lazy iterators)
+methods2: read in chunks f.read(4096) inside a loop
+
+q: string focus : manipulation & internals
+strings are tje immutable, every + operation creats a new strings(string1 + string2) inside a loop?
+
+ans: since strings are immutable, every +operation creats a new string object and copies the old content over this is an O(n^2) operation in looop
+optimization : use ''.join(list_of_strings) which calculates the total size first
+and allocates memomry once, making it O(n)
+
+Q: how is a python dictionary implemented internally ?
+ans: it is implemented as a hashtable(hash map). it uses the hash() of the keyto calculate the index in an array (bucket) where the value is stored
+complexity: average case for lookup, iszert, and delete is O(1). worst case (collisions) is O(n).
+
+ OOPS:
+ Explain self and __init__.
+ ans:
+ self: A refernce to the current instance of the class (similar to this in C++/java) it difference to the instance variable from local variables
+__init__ : the constructor method used to initialize the oject's state (attributes) when it is created
+
+Q: what is the difference between inheritance and composition?
+ans: 
+inheritance: (Is-A):child class derives features from parents class(e.g., Car is a Vwhiclw) GOOD for code reuse but creats tight coupling 
+Composition: (Has-A): A class contains Objects of other classes(E.g., car has an engine) Generally preffered for flexibility
+
+
+Q:what MRO (Methods Resolution )order?
+ans: it determines the order in which python looks for a method in a hierarchy of classes (especially in multiple inheritance).Python uses the C# Linearizations algorithm. you canview it via className.more
+
+Q: what are __slots__ and why might AMD care?
+
+Ans:  By default,Python objects store attributes in a dynamic dictionary(__dict__, which consumes significant RAM
+Defining  __slots__=['attr1','attr2'] tells python to use static stucture(like a C struct), saving huge amounts of memory ans slightly sppeding up attribute access.
+
+
+remove duplicates from the list while maintaining the order
+
+data = [1,5,2,1,9,5]
+seen= set()
+results = [x for x in data if not (x in seen or seen.add(x))]
+

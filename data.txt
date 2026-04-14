@@ -1,0 +1,8 @@
+2026-04-02 10:00:01 INFO: System boot sequence initiated.
+2026-04-02 10:05:22 DEBUG: Connection established with database.
+2026-04-02 10:15:45 CRITICAL: Memory usage exceeded 95% threshold!
+2026-04-02 10:16:10 WARNING: Disk space running low on /dev/sda1.
+2026-04-02 10:20:33 CRITICAL: Database connection lost. Immediate restart required.
+2026-04-02 10:25:00 ERROR: Failed to write to temp directory.
+2026-04-02 10:30:15 CRITICAL: Kernel panic detected in subsystem B.
+2026-04-02 10:45:12 INFO: User 'admin' logged in from 192.168.1.1.

@@ -1,0 +1,117 @@
+File handling is a core skill in Python, whether you are analyzing server logs, processing data sets, or writing automation scripts. In coding interviews and real-world tasks, interviewers look for two main things: your ability to manage memory efficiently (not crashing the system by loading a 10GB file into RAM at once) and your use of context managers (the with statement).
+
+Here are the top 5 most frequently asked Python file-handling problems, complete with optimal solutions and explanations.
+
+1. The Word Frequency Counter
+The Problem: Write a script to read a text file, count how many times each word appears, and return the top 3 most common words.
+
+The Solution:
+
+Python
+from collections import Counter
+import re
+
+def top_words(filepath, top_n=3):
+    try:
+        with open(filepath, 'r', encoding='utf-8') as file:
+            # Read the file and convert to lowercase
+            text = file.read().lower()
+            
+            # Use regex to extract words (ignores punctuation)
+            words = re.findall(r'\b\w+\b', text)
+            
+            # Count the words
+            word_counts = Counter(words)
+            
+            return word_counts.most_common(top_n)
+    except FileNotFoundError:
+        return "Error: File not found."
+
+# Output example: [('the', 42), ('error', 15), ('nvme', 10)]
+Why interviewers like it: It tests your knowledge of standard libraries (collections.Counter), string manipulation, and basic regex.
+
+2. Finding the Longest Word in a File
+The Problem: Read a file and find the longest word within it.
+
+The Solution:
+
+Python
+def find_longest_word(filepath):
+    longest_word = ""
+    try:
+        with open(filepath, 'r', encoding='utf-8') as file:
+            for line in file:
+                words = line.split()
+                for word in words:
+                    # Strip punctuation for an accurate length check
+                    clean_word = word.strip(".,!?:;'\"")
+                    if len(clean_word) > len(longest_word):
+                        longest_word = clean_word
+        return longest_word
+    except FileNotFoundError:
+        return "File not found."
+Why interviewers like it: This tests your ability to iterate line-by-line. Reading line-by-line (for line in file:) is highly memory-efficient because it only loads one line into memory at a time, making it safe for massive files.
+
+3. Log Parsing: Extracting Specific Lines
+The Problem: You have a massive server log file. Extract all lines that contain the word "ERROR" or "CRITICAL" and write them to a new file. (This is highly relevant to your NVMe monitoring work!)
+
+The Solution:
+
+Python
+def extract_errors(input_log, output_log):
+    keywords = ["ERROR", "CRITICAL"]
+    
+    try:
+        # Open both files simultaneously using a single 'with' statement
+        with open(input_log, 'r') as infile, open(output_log, 'w') as outfile:
+            for line in infile:
+                # Check if any keyword exists in the current line
+                if any(keyword in line for keyword in keywords):
+                    outfile.write(line)
+        print("Error extraction complete.")
+    except FileNotFoundError:
+        print("Input log file missing.")
+Why interviewers like it: It demonstrates opening multiple files at once safely. The use of any() makes the condition clean and easy to scale if you need to add more keywords later.
+
+4. Merging Multiple Files into One
+The Problem: You have a list of text files (e.g., daily logs). Write a script to merge their contents into a single master file.
+
+The Solution:
+
+Python
+def merge_files(file_list, output_file):
+    with open(output_file, 'w') as outfile:
+        for filename in file_list:
+            try:
+                with open(filename, 'r') as infile:
+                    # Write the content of the current file
+                    outfile.write(infile.read())
+                    # Add a newline between file contents just in case
+                    outfile.write("\n") 
+            except FileNotFoundError:
+                print(f"Skipping {filename}: File not found.")
+Why interviewers like it: It tests nested file handling and error management. If one file in the list is missing, the try-except block ensures the program doesn't crash and continues merging the rest.
+
+5. Getting the Size of a File Without Reading It
+The Problem: Write a function to check the size of a file in Megabytes (MB). If it is larger than 100MB, delete it.
+
+The Solution:
+
+Python
+import os
+
+def check_and_delete_large_file(filepath, size_limit_mb=100):
+    if os.path.exists(filepath):
+        # getsize returns bytes. Divide by (1024 * 1024) for MB.
+        file_size_mb = os.path.getsize(filepath) / (1024 * 1024)
+        
+        print(f"File size: {file_size_mb:.2f} MB")
+        
+        if file_size_mb > size_limit_mb:
+            os.remove(filepath)
+            print(f"File exceeded {size_limit_mb}MB and was deleted.")
+        else:
+            print("File size is within limits.")
+    else:
+        print("File does not exist.")
+Why interviewers like it: It shifts away from reading/writing and tests your knowledge of the os module, file system metadata, and safe deletion practices (always checking os.path.exists before calling os.remove).
