@@ -17,6 +17,6 @@ def search(list, n):
 list = [4,7,8,12,45,99,10987,56666]
 n =45
 if search(list,n):
-    print("Found at)", pos+1)
+    print("Found at", pos+1)
 else:
     print("Not found")

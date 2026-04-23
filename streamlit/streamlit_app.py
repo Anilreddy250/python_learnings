@@ -1,0 +1,53 @@
+import streamlit as st
+import time as t
+
+# st.image("")
+st.title("ANIL REDDY SITE")
+st.header("welcome to my wed page")
+st.subheader("go though thee page")
+st.info("no information available here")
+st.warning("warning you add here")
+st.error("error message")
+st.success("congrats you have got pass")
+st.write("employee name")
+st.write("")
+st.markdown("Anil reddy")
+st.markdown("#Anil reddy")
+st.markdown("##Anil reddy")
+st.markdown(":moon:")
+st.text("anil reddy lerners")
+st.caption("caption is here")
+st.latex(r'''a+b x^2 +c''')
+ #widgets
+st.checkbox('login')
+st.button("click")
+st.radio("pick yout gender",["male", "female", "other"])
+st.selectbox("pick you coice",["ML","cloud","cyber security"])
+st.multiselect("choose the dept",["content","sales","markwting"])
+st.select_slider("rating",["Bad","good","Excellent","outstading"])
+st.slider("enter your number", 0 ,100)
+# st.number_input("pick a number" (0, 100))
+st.text_input("enter your email address")
+st.date_input("coming data")
+st.time_input()
+st.text_area("welcome to my page")
+st.file_uploader("upload your file/folder")
+st.color_picker("color")
+st.progress("90")
+with st.spinner("just wait"): #used to display  meassge waiting
+    t.sleep(2)
+st.balloons()
+
+st.sidebar("welcome to anil reddy web site")
+st.sidebar.text_input("mail address")
+st.sidebar.text_input("password")
+st.sidebar.button("submit")
+st.sidebar.radio("professional expret", ["student", "single","married"])
+#data visualization
+import pandas as pd
+import numpy as np
+st.title("Bar chart")
+data = pd.DataFrame(np.random.randn(50,2),columns=["x","y"])
+st.bar_chart(data)
+st.title(data)
+st.area_chart(data)

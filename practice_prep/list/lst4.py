@@ -13,7 +13,13 @@
 # reverse = list.reverse()
 # print(reverse)
 
-string = "anianilaaaaaaaa"
-counts = string.find("l")
-print(counts)
+# string = "anianilaaaaaaaa"
+# counts = string.find("l")
+# print(counts)
 
+def fibonacci_iterative(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+        print( a)
+fibonacci_iterative(5)

@@ -26,14 +26,14 @@
 # W3 = W1 + W2
 # print(W3.balance)
 
-class Team:
-    def __init__(self, members):
-        self.members = members
-    def __len__(self):
-        return len(self.members)
-    def __getitem__(self, index):
-        return self.members[index]
-avegers = Team(["Iron man","Thor", "Hulk"])
-print(len(avegers))
-print(avegers[0])
+# class Team:
+#     def __init__(self, members):
+#         self.members = members
+#     def __len__(self):
+#         return len(self.members)
+#     def __getitem__(self, index):
+#         return self.members[index]
+# avegers = Team(["Iron man","Thor", "Hulk"])
+# print(len(avegers))
+# print(avegers[0])
     

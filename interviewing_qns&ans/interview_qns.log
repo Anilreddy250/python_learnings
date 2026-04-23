@@ -1,0 +1,185 @@
+1. Core Data Structures & Mutability
+Candidates with 1 year of experience must understand how Python handles data in memory.
+
+Q: What is the main difference between a List and a Tuple?
+
+Ans: Lists are mutable (can be changed after creation), while Tuples are immutable (cannot be changed). Tuples are generally faster and can be used as keys in a dictionary, whereas lists cannot.
+
+Q: How does Python handle memory management?
+
+Ans: Python uses a Private Heap to store objects. It managed via Reference Counting (tracking how many references point to an object) and a Garbage Collector that handles circular references.
+
+Q: What is the difference between a Shallow Copy and a Deep Copy?
+
+Ans: A Shallow Copy creates a new object but inserts references to the items found in the original. A Deep Copy creates a new object and recursively adds copies of the nested objects, making it completely independent.
+
+2. Advanced Concepts (Decorators & Generators)
+These topics separate a beginner from someone who has spent a year working with the language.
+
+Q: What are Decorators and when would you use one?
+
+Ans: Decorators are functions that modify the behavior of another function without changing its source code. They are commonly used for logging, authentication, or timing execution.
+
+Q: What is a Generator and how is it different from a regular function?
+
+Ans: A generator uses the yield keyword instead of return. It returns an iterator that produces values one at a time (lazy evaluation), which is much more memory-efficient when dealing with large datasets.
+
+3. Object-Oriented Programming (OOP)
+Q: What is the purpose of self in Python classes?
+
+Ans: self represents the instance of the class. It allows access to the attributes and methods of the specific object being created.
+
+Q: What is the __init__ method?
+
+Ans: It is the constructor method in Python. It is automatically called when a new instance of a class is created to initialize the object's attributes.
+
+4. Practical & Troubleshooting
+Q: What is PEP 8?
+
+Ans: It is the official Style Guide for Python Code. It provides guidelines on indentation (4 spaces), variable naming (snake_case), and line length to ensure code readability.
+
+Q: Explain the *args and **kwargs syntax in functions.
+
+Ans: *args allows a function to take a variable number of non-keyword arguments (passed as a tuple). **kwargs allows for a variable number of keyword arguments (passed as a dictionary).
+
+5. Quick Coding Logic (Whiteboard/Live Coding)
+Ask them to solve a simple problem to see their coding style:
+
+Task: "Write a one-liner to swap two variables a and b."
+
+Correct Ans: a, b = b, a
+
+Task: "Given a list nums = [1, 2, 2, 3, 4, 4, 5], how do you remove duplicates?"
+
+Correct Ans: list(set(nums)) (Note: Ask if order matters; if it does, set() won't work).
+
+Interviewer Tip:
+Since you are a Senior Software Engineer with a background in Automation Testing, you might also want to ask them:
+
+"How would you use Python to handle an unexpected exception during a test run?" (Looking for try...except...finally blocks).
+
+"What libraries would you use for API or UI testing?" (Looking for requests, pytest, or Selenium).
+
+Since you are interviewing someone with 1 year of experience, you want to see if they can write clean, "Pythonic" code rather than just getting the right answer.Here are a few more coding problems ranging from basic logic to Python-specific features, along with the expected solutions.1. List Comprehension & FilteringProblem: Given a list of numbers, return a new list containing only the square of the even numbers using a single line of code.Expected Solution:Pythonnumbers = [1, 2, 3, 4, 5, 6]
+# Solution
+result = [x**2 for x in numbers if x % 2 == 0]
+print(result) # Output: [4, 16, 36]
+What to look for: Do they use a for loop, or are they aware of List Comprehensions? At 1 year of experience, they should know comprehensions.2. Reversing a String (The Pythonic Way)Problem: Write a function to reverse a string without using the built-in reversed() function.Expected Solution:Pythondef reverse_string(s):
+    return s[::-1]
+
+print(reverse_string("Python")) # Output: "nohtyP"
+What to look for: Using slicing ([::-1]) is the most efficient and Pythonic way. If they write a manual loop, it's correct, but it shows they might not be fully comfortable with Python's syntax sugar.3. Frequency of Elements (Dictionaries)Problem: Given a string, count the frequency of each character and return it as a dictionary.Expected Solution:Pythontext = "assembly"
+# Standard Way
+freq = {}
+for char in text:
+    freq[char] = freq.get(char, 0) + 1
+
+# Pro Way (using collections)
+from collections import Counter
+freq = Counter(text)
+What to look for: Using .get(char, 0) shows they understand how to handle missing keys in a dictionary. Mentioning collections.Counter is a huge plus.4. Fibonacci Sequence (Recursion vs. Iteration)Problem: Write a function to generate the $n^{th}$ Fibonacci number.Expected Solution (Iterative):Pythondef fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+What to look for: If they use recursion, ask them about efficiency. Recursive Fibonacci without memoization is $O(2^n)$, which is very slow. The iterative approach is $O(n)$.5. Merging Two DictionariesProblem: You have two dictionaries, dict_a and dict_b. How do you merge them so that dict_b updates dict_a?Expected Solution:Pythondict_a = {'a': 1, 'b': 2}
+dict_b = {'b': 3, 'c': 4}
+
+# Python 3.9+ way
+merged = dict_a | dict_b
+
+# Older way
+dict_a.update(dict_b)
+What to look for: Awareness of the union operator (|) shows they keep up with modern Python updates.6. Handling Files (Context Managers)Problem: Write a snippet to read a file named data.txt and print each line.Expected Solution:Pythonwith open('data.txt', 'r') as file:
+    for line in file:
+        print(line.strip())
+What to look for: They must use the with statement. If they just use file = open(...), ask them why the with keyword is preferred (it ensures the file is closed even if an error occurs).Interviewer Pro-Tip:Since you have a background in Embedded Systems and Automation, you might want to throw in a "Bonus" question about bitwise operators if the role is technical:Q: "How do you check if a number is even or odd using bitwise operators?"A: if (num & 1) == 0: # Even. This shows they understand low-level logic!Would you like some "Tricky" questions that test their understanding of Python's edge cases?
+
+suggest me the problems with list and set with ans ?
+
+For a candidate with 1 year of experience, you want to test if they understand the performance trade-offs between lists and sets, as well as their unique properties (ordering vs. uniqueness).
+
+Here are key problems focusing on Lists and Sets with the expected answers.
+
+1. Membership Testing (Performance)
+Problem: You have a collection of 1 million unique IDs. You need to check if a specific ID exists in that collection. Which data structure should you use, and why?
+
+Expected Answer:
+You should use a Set.
+
+Why: Sets use a Hash Table, making the average time complexity for lookups O(1) (constant time).
+
+Lists require a linear search, which has a time complexity of O(n). In a list of 1 million items, this is significantly slower.
+
+2. Finding Intersection of Two Lists
+Problem: Given two lists, list_a = [1, 2, 3, 4] and list_b = [3, 4, 5, 6], write a solution to find the common elements.
+
+Expected Solution:
+
+Python
+list_a = [1, 2, 3, 4]
+list_b = [3, 4, 5, 6]
+
+# The Pythonic Way
+common = list(set(list_a) & set(list_b))
+# Or
+common = list(set(list_a).intersection(list_b))
+What to look for: A junior developer might use a nested for loop (which is O(n×m)). A candidate with 1 year of experience should immediately think of Set Intersection for efficiency.
+
+3. List vs. Set: Preserving Order
+Problem: If you convert a list to a set and then back to a list to remove duplicates, what happens to the original order of elements?
+
+Expected Answer:
+The order is lost. Sets are unordered collections.
+
+Follow-up: "How do you remove duplicates while keeping the order?"
+
+Answer: You can use dict.fromkeys() or a loop with a "seen" set.
+
+Python
+items = [3, 1, 2, 3, 1]
+# Preserving order
+unique_items = list(dict.fromkeys(items)) 
+# Result: [3, 1, 2]
+4. Symmetric Difference
+Problem: Given two sets of student IDs, find the IDs that are in either of the sets, but not in both.
+
+Expected Solution:
+
+Python
+set_a = {1, 2, 3}
+set_b = {3, 4, 5}
+
+# Using the operator
+result = set_a ^ set_b 
+
+# Using the method
+result = set_a.symmetric_difference(set_b)
+# Output: {1, 2, 4, 5}
+5. Mutable Elements in a Set
+Problem: Can you add a List as an element inside a Set? Why or why not?
+
+Expected Answer:
+No. * Why: Sets only store hashable objects. Since Lists are mutable (they can change), they are unhashable.
+
+If they need to store a sequence in a set, they should convert the List to a Tuple first.
+
+6. List Manipulation (Slicing & Stepping)
+Problem: How do you extract every second element from a list starting from the first element?
+
+Expected Solution:
+
+Python
+nums = [10, 20, 30, 40, 50, 60]
+result = nums[::2] 
+# Output: [10, 30, 50]
+What to look for: Knowledge of the [start:stop:step] syntax.
+
+Comparison Summary for the Candidate
+If they struggle to choose between the two, ask them to fill in this mental table:
+
+Feature	List	Set
+Duplicates	Allowed	Not Allowed
+Ordering	Ordered (Index-based)	Unordered
+Lookup Speed	Slow (O(n))	Very Fast (O(1))
+Mutability	Mutable	Mutable (but elements must be hashable)
