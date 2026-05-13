@@ -1,7 +1,7 @@
 import streamlit as st
 import time as t
 
-# st.image("")
+st.image("")
 st.title("ANIL REDDY SITE")
 st.header("welcome to my wed page")
 st.subheader("go though thee page")
@@ -26,7 +26,7 @@ st.selectbox("pick you coice",["ML","cloud","cyber security"])
 st.multiselect("choose the dept",["content","sales","markwting"])
 st.select_slider("rating",["Bad","good","Excellent","outstading"])
 st.slider("enter your number", 0 ,100)
-# st.number_input("pick a number" (0, 100))
+st.number_input("pick a number" (0, 100))
 st.text_input("enter your email address")
 st.date_input("coming data")
 st.time_input()

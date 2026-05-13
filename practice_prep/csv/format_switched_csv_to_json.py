@@ -11,3 +11,4 @@ def csv_to_json(csv_path, json_path):
     with open(json_path, mode= "w") as json_file:
         json.dump(data, json_file, indent=4)
 csv_to_json("/home/mirafra/Desktop/python_learnings/practice_prep/csv.csv", "products.json")
+

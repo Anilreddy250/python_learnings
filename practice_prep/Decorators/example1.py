@@ -4,7 +4,7 @@ def changescase(func):
     return myinner
 @changescase
 def myfunction():
-    return "Helloe_eorld"
+    return "Hellow_world"
 print(myfunction())
 
 # def countdown(n):
